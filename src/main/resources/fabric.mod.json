@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "dyeallthethings",
+	"version": "${version}",
+	"name": "Dye ALL THE THINGS",
+	"description": "Allows to dye all armor",
+	"authors": [
+		"Fourmisain"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/dyeallthethings",
+		"sources": "https://github.com/Fourmisain/DyeAllTheThings",
+		"issues": "https://github.com/Fourmisain/DyeAllTheThings/issues"
+	},
+	"license": "MIT",
+	"icon": "assets/dyeallthethings/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"client": [
+			"io.github.fourmisain.dyeallthethings.DyeAllTheThingsClient"
+		]
+	},
+	"mixins": [
+		"dyeallthethings.mixins.json"
+	],
+	"depends": {
+		"fabricloader": "*",
+		"minecraft": "1.17.x"
+	}
+}
