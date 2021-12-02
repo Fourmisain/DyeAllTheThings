@@ -24,7 +24,7 @@
 		"dyeallthethings.mixins.json"
 	],
 	"depends": {
-		"fabricloader": "*",
+		"fabricloader": ">=0.12.0",
 		"minecraft": ">=1.16"
 	}
 }
