@@ -4,12 +4,10 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.minecraft.client.color.item.ItemColorProvider;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.util.registry.Registry;
-import org.apache.logging.log4j.LogManager;
 
 @Environment(EnvType.CLIENT)
 public class DyeAllTheThingsClient implements ClientModInitializer {

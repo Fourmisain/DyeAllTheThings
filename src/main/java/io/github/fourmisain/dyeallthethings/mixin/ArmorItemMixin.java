@@ -6,6 +6,6 @@ import org.spongepowered.asm.mixin.Mixin;
 
 /** Makes all armor dyable (works for ArmorDyeRecipe, CauldronBehavior, TradeOffers, ... basically everything except rendering) */
 @Mixin(ArmorItem.class)
-public class ArmorItemMixin implements DyeableItem {
+public abstract class ArmorItemMixin implements DyeableItem {
 
 }

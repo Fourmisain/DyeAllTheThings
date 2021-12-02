@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Environment(EnvType.CLIENT)
 @Mixin(TitleScreen.class)
-public class TitleScreenMixin {
+public abstract class TitleScreenMixin {
 	@Inject(at = @At("HEAD"), method = "init()V")
 	private void init(CallbackInfo info) {
 		DyeAllTheThingsClient.initFromTitleScreen();
