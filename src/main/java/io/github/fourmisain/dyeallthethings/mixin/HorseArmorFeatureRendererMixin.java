@@ -42,7 +42,7 @@ public abstract class HorseArmorFeatureRendererMixin extends FeatureRenderer<Hor
 	@Inject(method = "render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/entity/passive/HorseEntity;FFFFFF)V",
 		at = @At(
 			value = "INVOKE",
-			target = "Lnet/minecraft/client/render/entity/model/HorseEntityModel;animateModel(Lnet/minecraft/entity/passive/HorseBaseEntity;FFF)V",
+			target = "Lnet/minecraft/client/render/entity/model/HorseEntityModel;animateModel(Lnet/minecraft/entity/passive/AbstractHorseEntity;FFF)V",
 			ordinal = 0
 		),
 		locals = LocalCapture.CAPTURE_FAILHARD)
