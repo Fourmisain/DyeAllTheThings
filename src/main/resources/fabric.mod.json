@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "dyeallthethings",
 	"version": "${version}",
-	"name": "Dye ALL THE THINGS",
+	"name": "Dye All The Things",
 	"description": "Allows to dye all armor",
 	"authors": [
 		"Fourmisain"
@@ -15,11 +15,6 @@
 	"license": "MIT",
 	"icon": "assets/dyeallthethings/icon.png",
 	"environment": "*",
-	"entrypoints": {
-		"client": [
-			"io.github.fourmisain.dyeallthethings.DyeAllTheThingsClient"
-		]
-	},
 	"mixins": [
 		"dyeallthethings.mixins.json"
 	],

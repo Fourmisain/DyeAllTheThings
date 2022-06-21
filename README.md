@@ -1,4 +1,4 @@
-### Dye ALL THE THINGS
+### Dye All The Things
 
 ###### This was a terrible idea.
 
