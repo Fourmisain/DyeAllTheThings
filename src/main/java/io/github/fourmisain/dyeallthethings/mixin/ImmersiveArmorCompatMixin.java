@@ -23,7 +23,9 @@ public abstract class ImmersiveArmorCompatMixin extends Piece {
 		at = @At(
 			value = "INVOKE",
 			target = "Limmersive_armors/client/render/entity/piece/LayerPiece;renderParts(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/item/ItemStack;Limmersive_armors/item/ExtendedArmorItem;Lnet/minecraft/client/render/entity/model/EntityModel;FFFZ)V"
-		))
+		),
+		require = 0 // better to not render than crash in this case
+	)
 	private void renderNonDyeableArmorItem(LayerPiece instance, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, ItemStack itemStack, ExtendedArmorItem extendedArmorItem, EntityModel entityModel, float r, float g, float b, boolean overlay) {
 		int color = DyeAllTheThingsClient.getColor(itemStack);
 
