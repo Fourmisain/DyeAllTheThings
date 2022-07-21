@@ -3,15 +3,18 @@
   "minVersion": "0.8",
   "package": "io.github.fourmisain.dyeallthethings.mixin",
   "compatibilityLevel": "JAVA_8",
+  "plugin": "io.github.fourmisain.dyeallthethings.MixinPlugin",
   "mixins": [
     "ArmorItemMixin",
     "HorseArmorItemMixin",
-    "ImmersiveArmorCompatMixin",
     "MinecraftServerMixin"
   ],
   "client": [
     "ArmorFeatureRendererMixin",
+    "BetterAnimalsPlusCompatMixin",
+    "BetterAnimalsPlusTrinketCompatMixin",
     "HorseArmorFeatureRendererMixin",
+    "ImmersiveArmorCompatMixin",
     "TitleScreenMixin"
   ],
   "injectors": {
