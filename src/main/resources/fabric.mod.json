@@ -3,7 +3,7 @@
 	"id": "dyeallthethings",
 	"version": "${version}",
 	"name": "Dye All The Things",
-	"description": "Allows to dye all armor",
+	"description": "Lets you dye all armor exactly like leather armor.",
 	"authors": [
 		"Fourmisain"
 	],
