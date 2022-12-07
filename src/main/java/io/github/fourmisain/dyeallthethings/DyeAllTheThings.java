@@ -9,7 +9,7 @@ import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.HorseArmorItem;
 import net.minecraft.item.Item;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 public class DyeAllTheThings {
 	public static List<Item> getArmorItems() {
-		return Registry.ITEM.stream()
+		return Registries.ITEM.stream()
 			.filter(item -> (item instanceof ArmorItem || item instanceof HorseArmorItem))
 			.collect(Collectors.toList());
 	}

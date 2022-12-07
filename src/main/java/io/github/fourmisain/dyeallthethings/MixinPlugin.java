@@ -1,21 +1,12 @@
 package io.github.fourmisain.dyeallthethings;
 
 import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.ModContainer;
-import net.fabricmc.loader.api.Version;
-import net.fabricmc.loader.api.VersionParsingException;
-import net.fabricmc.loader.api.metadata.version.VersionPredicate;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-
-import static io.github.fourmisain.dyeallthethings.DyeAllTheThings.testVersion;
 
 public class MixinPlugin implements IMixinConfigPlugin {
 	@Override
