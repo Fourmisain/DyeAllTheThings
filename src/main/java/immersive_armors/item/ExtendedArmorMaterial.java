@@ -1,13 +1,13 @@
 package immersive_armors.item;
 
-import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 
 public class ExtendedArmorMaterial implements ArmorMaterial {
-	@Override public int getDurability(EquipmentSlot slot) { return 0; }
-	@Override public int getProtectionAmount(EquipmentSlot slot) { return 0; }
+	@Override public int getDurability(ArmorItem.Type type) { return 0; }
+	@Override public int getProtection(ArmorItem.Type type) { return 0; }
 	@Override public int getEnchantability() { return 0; }
 	@Override public SoundEvent getEquipSound() { return null; }
 	@Override public Ingredient getRepairIngredient() { return null; }
