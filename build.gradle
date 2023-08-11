@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.2-SNAPSHOT'
+	id 'fabric-loom' version '1.3-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -20,11 +20,12 @@ class DeletingFileVisitor extends SimpleFileVisitor<Path> {
 	}
 }
 
-targetCompatibility = sourceCompatibility = JavaVersion.VERSION_1_8
-
-archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
 
 repositories {
 	repositories {
@@ -60,12 +61,13 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 java {
+	targetCompatibility = sourceCompatibility = JavaVersion.VERSION_1_8
 	withSourcesJar()
 }
 
 jar {
 	from("LICENSE") {
-		rename { "${it}_${project.archivesBaseName}"}
+		rename { "${it}_${project.base.archivesName.get()}" }
 	}
 }
 
@@ -90,11 +92,5 @@ publishing {
 		mavenJava(MavenPublication) {
 			from components.java
 		}
-	}
-
-	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-	repositories {
-		// Add repositories to publish to here.
-		// mavenLocal()
 	}
 }
