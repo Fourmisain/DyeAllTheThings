@@ -17,6 +17,8 @@ public class MixinPlugin implements IMixinConfigPlugin {
 			return FabricLoader.getInstance().isModLoaded("betteranimalsplus") && FabricLoader.getInstance().isModLoaded("trinkets");
 		} else if (mixinClassName.endsWith("ImmersiveArmorCompatMixin")) {
 			return FabricLoader.getInstance().isModLoaded("immersive_armors");
+		} else if (mixinClassName.endsWith("MythicMetalsMixin")) {
+			return FabricLoader.getInstance().isModLoaded("mythicmetals");
 		}
 
 		return true;

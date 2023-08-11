@@ -80,6 +80,7 @@ task finalize {
 
 			try (FileSystem fs = FileSystems.newFileSystem(jarFileUri, ['create': 'false'])) {
 				Files.walkFileTree(fs.getPath("immersive_armors"), new DeletingFileVisitor());
+				Files.walkFileTree(fs.getPath("nourl"), new DeletingFileVisitor());
 			}
 		}
 	}

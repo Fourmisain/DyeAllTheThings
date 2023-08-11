@@ -15,6 +15,7 @@
     "BetterAnimalsPlusTrinketCompatMixin",
     "HorseArmorFeatureRendererMixin",
     "ImmersiveArmorCompatMixin",
+    "MythicMetalsMixin",
     "TitleScreenMixin"
   ],
   "injectors": {
