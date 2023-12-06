@@ -15,7 +15,7 @@ public abstract class TitleScreenMixin {
 	private static boolean dyeallthethings$initialized = false;
 
 	@Inject(at = @At("HEAD"), method = "init()V")
-	private void init(CallbackInfo info) {
+	private void lateInit(CallbackInfo info) {
 		if (dyeallthethings$initialized) return;
 		dyeallthethings$initialized = true;
 
