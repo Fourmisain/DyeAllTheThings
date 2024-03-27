@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "dyeallthethings",
-	"version": "${version}",
+	"version": "${mod_version}",
 	"name": "Dye All The Things",
 	"description": "Lets you dye all armor exactly like leather armor.",
 	"authors": [
@@ -20,6 +20,6 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.14.8",
-		"minecraft": ">=1.20-"
+		"minecraft": "${game_version_range}"
 	}
 }
