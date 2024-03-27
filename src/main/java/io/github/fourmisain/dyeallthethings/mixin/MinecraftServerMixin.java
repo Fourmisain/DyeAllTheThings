@@ -12,7 +12,7 @@ public abstract class MinecraftServerMixin {
 	private static boolean dyeallthethings$initialized = false;
 
 	@Inject(method = "loadWorld", at = @At("TAIL"))
-	protected void loadWorld(CallbackInfo ci) {
+	protected void lateInit(CallbackInfo ci) {
 		if (dyeallthethings$initialized) return;
 		dyeallthethings$initialized = true;
 

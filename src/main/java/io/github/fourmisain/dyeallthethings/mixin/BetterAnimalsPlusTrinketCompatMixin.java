@@ -10,6 +10,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -17,6 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(targets = "dev/itsmeow/betteranimalsplus/client/fabric/BetterAnimalsPlusClientFabric$TrinketsSafeClassHack$1")
 public abstract class BetterAnimalsPlusTrinketCompatMixin {
+	@Unique
 	int dyeallthethings$color;
 
 	@Inject(method = "render", at = @At("HEAD"), require = 0)

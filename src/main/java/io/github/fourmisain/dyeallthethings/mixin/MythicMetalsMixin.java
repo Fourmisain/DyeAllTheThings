@@ -27,7 +27,7 @@ public abstract class MythicMetalsMixin {
 		),
 		require = 0 // version range too broad, rather let if fail than crash
 	)
-	private static void renderPart(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, ItemStack stack, Model model, Identifier texture) {
+	private static void renderNonDyeableArmorItem(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, ItemStack stack, Model model, Identifier texture) {
 		int color = DyeAllTheThingsClient.getColor(stack);
 
 		float r = 1, g = 1, b = 1;
