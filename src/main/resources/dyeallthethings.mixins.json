@@ -16,7 +16,7 @@
     "HorseArmorFeatureRendererMixin",
     "ImmersiveArmorCompatMixin",
     "MythicMetalsMixin",
-    "TitleScreenMixin"
+    "MinecraftClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1
