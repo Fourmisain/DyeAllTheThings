@@ -19,7 +19,7 @@
 		"dyeallthethings.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.14.8",
+		"fabricloader": ">=0.15.10",
 		"minecraft": "${game_version_range}"
 	}
 }

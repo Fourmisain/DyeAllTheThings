@@ -1,6 +1,5 @@
 package io.github.fourmisain.dyeallthethings;
 
-import net.fabricmc.loader.api.FabricLoader;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -11,15 +10,8 @@ import java.util.Set;
 public class MixinPlugin implements IMixinConfigPlugin {
 	@Override
 	public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-		if (mixinClassName.endsWith("BetterAnimalsPlusCompatMixin")) {
-			return FabricLoader.getInstance().isModLoaded("betteranimalsplus");
-		} else if (mixinClassName.endsWith("BetterAnimalsPlusTrinketCompatMixin")) {
-			return FabricLoader.getInstance().isModLoaded("betteranimalsplus") && FabricLoader.getInstance().isModLoaded("trinkets");
-		} else if (mixinClassName.endsWith("ImmersiveArmorCompatMixin")) {
-			return FabricLoader.getInstance().isModLoaded("immersive_armors");
-		} else if (mixinClassName.endsWith("MythicMetalsMixin")) {
-			return FabricLoader.getInstance().isModLoaded("mythicmetals");
-		}
+
+		// TODO reintroduce compatibility code for Better Animals Plus, Immersive Armors and Mythic Metals once the mods are updated
 
 		return true;
 	}
