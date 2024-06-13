@@ -1,5 +1,6 @@
 package io.github.fourmisain.dyeallthethings.mixin;
 
+import io.github.fourmisain.dyeallthethings.DyeAllTheThings;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.tag.ItemTags;
@@ -32,7 +33,7 @@ public abstract class TagGroupLoaderMixin {
 	public void makeAllArmorDyeable(ResourceManager resourceManager, CallbackInfoReturnable<Map<Identifier, List<TrackedEntry>>> cir) {
 		var map = cir.getReturnValue();
 
-		if (!dataType.equals("tags/items"))
+		if (!dataType.equals(DyeAllTheThings.ITEM_TAGS))
 			return;
 
 		map.compute(ItemTags.DYEABLE.id(), (k, entries) -> {
