@@ -9,8 +9,7 @@
 		"TagGroupLoaderMixin"
 	],
 	"client": [
-		"ArmorFeatureRendererMixin",
-		"HorseArmorFeatureRendererMixin",
+		"EquipmentRendererMixin",
 		"MinecraftClientMixin"
 	],
 	"injectors": {

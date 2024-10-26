@@ -27,6 +27,10 @@ base {
 	archivesName = project.archives_base_name
 }
 
+loom {
+	accessWidenerPath = file("src/main/resources/dyeallthethings.accesswidener")
+}
+
 repositories {
 	repositories {
 		maven {
