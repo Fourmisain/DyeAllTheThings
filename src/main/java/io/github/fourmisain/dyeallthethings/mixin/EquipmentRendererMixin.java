@@ -5,8 +5,8 @@ import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.Share;
 import com.llamalad7.mixinextras.sugar.ref.LocalBooleanRef;
 import com.llamalad7.mixinextras.sugar.ref.LocalIntRef;
+import net.minecraft.client.render.entity.equipment.EquipmentModel;
 import net.minecraft.client.render.entity.equipment.EquipmentRenderer;
-import net.minecraft.item.equipment.EquipmentModel;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -15,8 +15,8 @@ import java.util.List;
 @Mixin(EquipmentRenderer.class)
 public abstract class EquipmentRendererMixin {
 	@ModifyExpressionValue(
-		method = "render(Lnet/minecraft/item/equipment/EquipmentModel$LayerType;Lnet/minecraft/util/Identifier;Lnet/minecraft/client/model/Model;Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/util/Identifier;)V",
-		at = @At(value = "INVOKE", target = "Lnet/minecraft/item/equipment/EquipmentModel;getLayers(Lnet/minecraft/item/equipment/EquipmentModel$LayerType;)Ljava/util/List;")
+		method = "render(Lnet/minecraft/client/render/entity/equipment/EquipmentModel$LayerType;Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/client/model/Model;Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/util/Identifier;)V",
+		at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/equipment/EquipmentModel;getLayers(Lnet/minecraft/client/render/entity/equipment/EquipmentModel$LayerType;)Ljava/util/List;")
 	)
 	public List<EquipmentModel.Layer> checkForDyeableLayers(List<EquipmentModel.Layer> layers, @Share("hasDyeableLayer") LocalBooleanRef hasDyeableLayer) {
 		for (var layer : layers) {

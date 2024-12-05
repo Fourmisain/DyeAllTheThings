@@ -9,8 +9,8 @@
 		"TagGroupLoaderMixin"
 	],
 	"client": [
-		"EquipmentRendererMixin",
-		"MinecraftClientMixin"
+		"BasicItemModelMixin",
+		"EquipmentRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -21,7 +21,6 @@
 	"accessWidener": "dyeallthethings.accesswidener",
 	"depends": {
 		"fabricloader": ">=0.15.10",
-		"minecraft": "${game_version_range}",
-		"fabric-api": "*"
+		"minecraft": "${game_version_range}"
 	}
 }
