@@ -7,8 +7,8 @@ import net.minecraft.client.render.item.tint.DyeTintSource;
 import net.minecraft.client.render.item.tint.TintSource;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemDisplayContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ModelTransformationMode;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
@@ -31,7 +31,7 @@ public abstract class BasicItemModelMixin {
 		method = "update",
 		at = @At("HEAD")
 	)
-	private void addTintSourceToArmors(ItemRenderState state, ItemStack stack, ItemModelManager resolver, ModelTransformationMode transformationMode, ClientWorld world, LivingEntity user, int seed, CallbackInfo ci) {
+	private void addTintSourceToArmors(ItemRenderState state, ItemStack stack, ItemModelManager resolver, ItemDisplayContext displayContext, ClientWorld world, LivingEntity user, int seed, CallbackInfo ci) {
 		if (isArmor(stack.getItem()) && tints.isEmpty()) {
 			tints = List.of(new DyeTintSource(WHITE));
 		}
