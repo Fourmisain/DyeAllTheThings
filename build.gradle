@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.9-SNAPSHOT'
+	id 'fabric-loom' version '1.10-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -34,7 +34,7 @@ loom {
 repositories {
 	repositories {
 		maven {
-			url "https://cursemaven.com"
+			url = "https://cursemaven.com"
 			content {
 				includeGroup "curse.maven"
 			}
@@ -51,13 +51,11 @@ dependencies {
 processResources {
 	// expand all properties from gradle.properties
 	def stringProperties = providers.gradlePropertiesPrefixedBy('').get()
-	stringProperties.each { inputs.property(it.key, it.value) }
+	inputs.properties stringProperties
 
-	['fabric.mod.json', 'dyeallthethings.mixins.json'].each {
-		filesMatching(it) {
-			expand(stringProperties) {
-				escapeBackslash = true
-			}
+	filesMatching(['fabric.mod.json', '*.mixins.json']) {
+		expand(stringProperties) {
+			escapeBackslash = true
 		}
 	}
 }
@@ -73,32 +71,34 @@ java {
 }
 
 jar {
-	from("LICENSE") {
-		rename { "${it}_${project.base.archivesName.get()}" }
+	inputs.property 'archivesName', project.base.archivesName
+
+	from('LICENSE') {
+		rename { "${it}_${inputs.properties.archivesName}" }
 	}
 }
 
-task finalize {
+tasks.register('removeHeaders') {
 	doLast {
 		// delete "header files" from jar
 		var jar = remapJar.archiveFile.get().asFile.toPath()
 		if (Files.exists(jar)) {
 			var jarFileUri = new URI('jar:file', jar.toUri().getSchemeSpecificPart(), jar.toUri().getFragment())
 
-			def del = (fs, pkg) -> {
+			def del = (FileSystem fs, String pkg) -> {
 				def path = fs.getPath(pkg)
 				if (Files.exists(path)) Files.walkFileTree(path, new DeletingFileVisitor());
 			}
 
 			try (FileSystem fs = FileSystems.newFileSystem(jarFileUri, ['create': 'false'])) {
-				del(fs, "immersive_armors")
-				del(fs, "nourl")
+				del(fs, 'immersive_armors')
+				del(fs, 'nourl')
 			}
 		}
 	}
 }
 
-build.finalizedBy(finalize)
+build.finalizedBy removeHeaders
 
 publishing {
 	publications {
