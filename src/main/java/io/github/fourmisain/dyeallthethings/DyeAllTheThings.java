@@ -10,12 +10,17 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.HorseArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.registry.Registry;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class DyeAllTheThings {
+	public static String MOD_ID = "dyeallthethings";
+	public static Logger LOGGER = LogManager.getLogger(MOD_ID);
+
 	public static List<Item> getArmorItems() {
 		return Registry.ITEM.stream()
 			.filter(item -> (item instanceof ArmorItem || item instanceof HorseArmorItem))

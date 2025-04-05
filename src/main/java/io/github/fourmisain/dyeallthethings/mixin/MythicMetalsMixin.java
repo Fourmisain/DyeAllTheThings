@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class MythicMetalsMixin {
 	@Dynamic
 	@Redirect(
-		method = "lambda$registerArmorRenderer$7(Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;Lnet/minecraft/class_1799;Lnet/minecraft/class_1309;Lnet/minecraft/class_1304;ILnet/minecraft/class_572;)V",
+		method = "*", // registerArmorRenderer lambda
 		at = @At(
 			value = "INVOKE",
 			target = "Lnet/fabricmc/fabric/api/client/rendering/v1/ArmorRenderer;renderPart(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/item/ItemStack;Lnet/minecraft/client/model/Model;Lnet/minecraft/util/Identifier;)V"
