@@ -15,7 +15,7 @@ import java.util.List;
 @Mixin(EquipmentRenderer.class)
 public abstract class EquipmentRendererMixin {
 	@ModifyExpressionValue(
-		method = "render(Lnet/minecraft/client/render/entity/equipment/EquipmentModel$LayerType;Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/client/model/Model;Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/util/Identifier;)V",
+		method = "render(Lnet/minecraft/client/render/entity/equipment/EquipmentModel$LayerType;Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/command/OrderedRenderCommandQueue;ILnet/minecraft/util/Identifier;II)V",
 		at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/equipment/EquipmentModel;getLayers(Lnet/minecraft/client/render/entity/equipment/EquipmentModel$LayerType;)Ljava/util/List;")
 	)
 	public List<EquipmentModel.Layer> checkForDyeableLayers(List<EquipmentModel.Layer> layers, @Share("hasDyeableLayer") LocalBooleanRef hasDyeableLayer) {
