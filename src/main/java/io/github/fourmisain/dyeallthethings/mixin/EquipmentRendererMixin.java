@@ -5,20 +5,20 @@ import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.Share;
 import com.llamalad7.mixinextras.sugar.ref.LocalBooleanRef;
 import com.llamalad7.mixinextras.sugar.ref.LocalIntRef;
-import net.minecraft.client.render.entity.equipment.EquipmentModel;
-import net.minecraft.client.render.entity.equipment.EquipmentRenderer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 import java.util.List;
+import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer;
+import net.minecraft.client.resources.model.EquipmentClientInfo;
 
-@Mixin(EquipmentRenderer.class)
+@Mixin(EquipmentLayerRenderer.class)
 public abstract class EquipmentRendererMixin {
 	@ModifyExpressionValue(
-		method = "render(Lnet/minecraft/client/render/entity/equipment/EquipmentModel$LayerType;Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/command/OrderedRenderCommandQueue;ILnet/minecraft/util/Identifier;II)V",
-		at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/equipment/EquipmentModel;getLayers(Lnet/minecraft/client/render/entity/equipment/EquipmentModel$LayerType;)Ljava/util/List;")
+		method = "renderLayers(Lnet/minecraft/client/resources/model/EquipmentClientInfo$LayerType;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lnet/minecraft/world/item/ItemStack;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;ILnet/minecraft/resources/Identifier;II)V",
+		at = @At(value = "INVOKE", target = "Lnet/minecraft/client/resources/model/EquipmentClientInfo;getLayers(Lnet/minecraft/client/resources/model/EquipmentClientInfo$LayerType;)Ljava/util/List;")
 	)
-	public List<EquipmentModel.Layer> checkForDyeableLayers(List<EquipmentModel.Layer> layers, @Share("hasDyeableLayer") LocalBooleanRef hasDyeableLayer) {
+	public List<EquipmentClientInfo.Layer> checkForDyeableLayers(List<EquipmentClientInfo.Layer> layers, @Share("hasDyeableLayer") LocalBooleanRef hasDyeableLayer) {
 		for (var layer : layers) {
 			if (layer.dyeable().isPresent()) {
 				hasDyeableLayer.set(true);
@@ -30,7 +30,7 @@ public abstract class EquipmentRendererMixin {
 	}
 
 	@ModifyExpressionValue(
-		method = "getDyeColor",
+		method = "getColorForLayer",
 		at = @At(value = "CONSTANT", args = "intValue=-1")
 	)
 	private static int dyeEquipmentWithoutDyeableLayers(int original, @Local(argsOnly = true) int dyeColor, @Share("color") LocalIntRef color, @Share("hasDyeableLayer") LocalBooleanRef hasDyeableLayer) {

@@ -1,13 +1,6 @@
 package io.github.fourmisain.dyeallthethings.mixin;
 
 import io.github.fourmisain.dyeallthethings.DyeAllTheThingsClient;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.registry.tag.TagEntry;
-import net.minecraft.registry.tag.TagGroupLoader;
-import net.minecraft.registry.tag.TagGroupLoader.TrackedEntry;
-import net.minecraft.resource.ResourceManager;
-import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -19,28 +12,35 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagEntry;
+import net.minecraft.tags.TagLoader;
+import net.minecraft.tags.TagLoader.EntryWithSource;
 
 import static io.github.fourmisain.dyeallthethings.DyeAllTheThings.MOD_ID;
 
-@Mixin(TagGroupLoader.class)
+@Mixin(TagLoader.class)
 public abstract class TagGroupLoaderMixin {
 	@Shadow @Final
-	private String dataType;
+	private String directory;
 
 	// runs on worker thread
-	@Inject(method = "loadTags", at = @At("RETURN"))
-	public void makeAllArmorDyeable(ResourceManager resourceManager, CallbackInfoReturnable<Map<Identifier, List<TrackedEntry>>> cir) {
+	@Inject(method = "load", at = @At("RETURN"))
+	public void makeAllArmorDyeable(ResourceManager resourceManager, CallbackInfoReturnable<Map<Identifier, List<EntryWithSource>>> cir) {
 		var map = cir.getReturnValue();
 
-		if (!dataType.equals("tags/item"))
+		if (!directory.equals("tags/item"))
 			return;
 
-		map.compute(ItemTags.DYEABLE.id(), (k, entries) -> {
-			var newEntries = (entries == null ? new ArrayList<TrackedEntry>() : entries);
+		map.compute(ItemTags.DYEABLE.location(), (k, entries) -> {
+			var newEntries = (entries == null ? new ArrayList<EntryWithSource>() : entries);
 
-			Registries.ITEM.stream()
+			BuiltInRegistries.ITEM.stream()
 				.filter(DyeAllTheThingsClient::isArmor)
-				.map(Registries.ITEM::getId)
+				.map(BuiltInRegistries.ITEM::getKey)
 				.forEach(itemId -> dyeallthethings$addEntry(newEntries, itemId));
 
 			return newEntries;
@@ -48,7 +48,7 @@ public abstract class TagGroupLoaderMixin {
 	}
 
 	@Unique
-	private static void dyeallthethings$addEntry(List<TrackedEntry> entries, Identifier itemId) {
-		entries.add(new TrackedEntry(TagEntry.create(itemId), MOD_ID));
+	private static void dyeallthethings$addEntry(List<EntryWithSource> entries, Identifier itemId) {
+		entries.add(new EntryWithSource(TagEntry.element(itemId), MOD_ID));
 	}
 }

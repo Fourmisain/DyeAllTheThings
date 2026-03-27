@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class MinecraftServerMixin {
 	private static boolean dyeallthethings$initialized = false;
 
-	@Inject(method = "loadWorld", at = @At("TAIL"))
+	@Inject(method = "loadLevel", at = @At("TAIL"))
 	protected void lateInit(CallbackInfo ci) {
 		if (dyeallthethings$initialized) return;
 		dyeallthethings$initialized = true;
