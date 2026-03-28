@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version "${loom_version}"
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
 	id 'maven-publish'
 }
 
@@ -29,6 +29,12 @@ base {
 
 loom {
 	accessWidenerPath = file("src/main/resources/dyeallthethings.accesswidener")
+
+	runs {
+		client {
+			vmArgs "-Dmixin.debug.export=true"
+		}
+	}
 }
 
 repositories {
@@ -44,8 +50,8 @@ repositories {
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings loom.officialMojangMappings()
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
 
 processResources {
@@ -81,7 +87,7 @@ jar {
 tasks.register('removeHeaders') {
 	doLast {
 		// delete "header files" from jar
-		var jar = remapJar.archiveFile.get().asFile.toPath()
+		var jar = jar.archiveFile.get().asFile.toPath()
 		if (Files.exists(jar)) {
 			var jarFileUri = new URI('jar:file', jar.toUri().getSchemeSpecificPart(), jar.toUri().getFragment())
 

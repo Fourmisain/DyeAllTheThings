@@ -5,12 +5,20 @@
 	"compatibilityLevel": "JAVA_${java_version}",
 	"plugin": "io.github.fourmisain.dyeallthethings.MixinPlugin",
 	"mixins": [
+		"access.CauldronInteractionDispatcherAccessor",
 		"MinecraftServerMixin",
-		"TagGroupLoaderMixin"
+		"RecipeManagerMixin",
+		"RecipeSerializersMixin",
+		"trident.ThrownTridentMixin"
 	],
 	"client": [
 		"BasicItemModelMixin",
-		"EquipmentRendererMixin"
+		"EquipmentRendererMixin",
+		"NoDataSpecialModelRendererMixin",
+		"shield.ShieldSpecialRendererMixin",
+		"trident.ThrownTridentRendererMixin",
+		"trident.ThrownTridentRenderStateMixin",
+		"trident.TridentSpecialRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

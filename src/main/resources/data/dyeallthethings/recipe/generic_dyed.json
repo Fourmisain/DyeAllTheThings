@@ -1,0 +1,6 @@
+{
+  "type": "dyeallthethings:generic_crafting_dye",
+  "category": "misc",
+  "dye": "#minecraft:dyes",
+  "group": "dyed_armor"
+}
