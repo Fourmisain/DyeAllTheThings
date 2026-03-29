@@ -18,7 +18,7 @@ Things that will not work:
 
 #### Feature History:
 
-- 1.8.0 for 26.1: All items can be dyed
+- 1.9.0 for 26.1: All items can be dyed
 - 1.7.0 for 1.21.5: All armor + Elytra can be dyed
 - before 1.7.0: All armor can be dyed
 
