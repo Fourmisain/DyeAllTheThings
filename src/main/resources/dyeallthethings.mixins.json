@@ -5,10 +5,10 @@
 	"compatibilityLevel": "JAVA_${java_version}",
 	"plugin": "io.github.fourmisain.dyeallthethings.MixinPlugin",
 	"mixins": [
-		"access.CauldronInteractionDispatcherAccessor",
 		"MinecraftServerMixin",
 		"RecipeManagerMixin",
 		"RecipeSerializersMixin",
+		"access.CauldronInteractionDispatcherAccessor",
 		"trident.ThrownTridentMixin"
 	],
 	"client": [
